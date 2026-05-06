@@ -26,7 +26,7 @@ telebot/
 └── README.md
 ```
 
-## ⚙️ Setup
+## ⚙️ Setup Intruction
 
 ### 1. Install dependencies
 
