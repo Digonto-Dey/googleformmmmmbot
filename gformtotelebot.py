@@ -4,6 +4,9 @@ import requests
 import os
 import json
 import traceback
+from dotenv import load_dotenv
+
+load_dotenv()
 import asyncio
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes, CommandHandler
@@ -14,8 +17,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = "7883734098:AAE1W8kwmRG10rcECvnBea6UOydh_MqIpjM"
-FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-2fx_ibOrVF-SIuf6tD5mwAHU_-5HKono73i-i1Sy44fEDw/formResponse"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+FORM_URL = os.getenv("FORM_URL")
+
+if not BOT_TOKEN or not FORM_URL:
+    raise RuntimeError("BOT_TOKEN and FORM_URL must be set in your .env file.")
 
 # Load the field mapping
 try:
